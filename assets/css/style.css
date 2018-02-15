@@ -1,0 +1,210 @@
+    body {
+    background-image: url("../../assets/images/bg.jpg");
+    font-family: 'Roboto Mono', monospace;
+    align-content: center;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+}
+
+h1 {
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-size: 4rem;
+}
+
+h2 {
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-size: 3rem;
+    margin:20px;
+}
+
+.byline {
+    font-family: 'Lato', 'Arial', sans-serif;
+}
+
+.score {
+    font-family: 'VT323', monospace;
+}
+
+@keyframes star {
+    0% {
+        opacity: 0;
+        transform: scale(1.5) translateY(-0.75em);
+    }
+    20% {
+        opacity: 1;
+    }
+    89% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateZ(-1000em);
+        display: none;
+    }
+}
+
+@keyframes wars {
+    0% {
+        opacity: 0;
+        transform: scale(1.5) translateY(-0.75em);
+    }
+    20% {
+        opacity: 1;
+    }
+    89% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateZ(-1000em);
+        display: none;
+    }
+}
+
+.star {
+    width: 70%;
+    position: relative;
+    top: 100px;
+    animation: star 5s ease-out;
+}
+
+.wars {
+    width: 70%;
+    position: relative;
+    top: 200px;
+    animation: wars 5s ease-out;
+}
+
+.starwars-intro {
+    width: 100%;
+    margin: 150px 0px;
+    perspective: 800px;
+    transform-style: preserve3d;
+    align-content: center;
+    position: absolute;
+    top: 0px;
+}
+
+@keyframes spin-letters {
+    0%,
+    10% {
+        opacity: 0;
+        transform: rotateY(90deg);
+    }
+    30% {
+        opacity: 1;
+    }
+    70%,
+    86% {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+    95%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.byline span {
+    position: relative;
+    top: -88px;
+    animation: spin-letters 5s linear;
+}
+
+.byline {
+    width: 100%;
+    font-stretch: extra-expanded;
+    color: white;
+    align-content: center;
+    text-align: center;
+    font-size: 5rem;
+    vertical-align: middle;
+    animation: move-byline 5s linear;
+}
+
+#gameboard {
+    align-content: center;
+    margin: 100px;
+}
+
+#yourFighter {
+    align-content: center;
+    flex: content;
+    justify-content: space-between;
+}
+
+#fighterBox {
+    width:75%;    
+    flex: content;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+}
+
+/* create fighter card */
+
+.fighterCard {
+    height: 150px;
+    background-color: white;
+    border: 1px solid green;
+    align-content: center;
+    position: relative;
+    top: 10px;
+    margin: 15px 5px;
+}
+
+.fighterName {
+    position: relative;
+    top: 10px;
+    color: black;
+    font-size: .8rem;
+}
+
+.fighterPic {
+    height: 80px;
+    position: relative;
+    top: 25px;
+}
+
+.fighterHealth {
+    position: relative;
+    top: 25px;
+    color: black;
+    font-size: .7rem;
+}
+
+#enemies {
+    clear: both;
+    align-content: center;
+    flex: content;
+    justify-content: space-between;
+}
+
+#fightSection {
+    clear: both;
+    align-content: center;
+}
+
+#defender {
+    clear: both;
+    align-content: center;
+}
+
+#messageBar {
+    animation: msg 2s;
+}
+
+@keyframes msg {
+    0% {
+
+    }
+    50% {
+
+    }
+    100%{
+
+    }
+}

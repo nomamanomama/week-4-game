@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" href="./assets/css/reset.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono|VT323" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+
+    
+    <title>Star Wars RPG</title>
+</head>
+<body>
+    <!-- <div class="starwars-intro">
+        <img src="./assets/images/star.svg" alt="Star" class="star">
+        <img src="./assets/images/wars.svg" alt="Wars" class="wars">
+        <h1 id="byline" class="byline">
+                <span>R</span>
+                <span>P</span>
+                <span>G</span> 
+                &nbsp 
+                <span>G</span>
+                <span>A</span>
+                <span>M</span>
+                <span>E</span>
+        </h1>
+    </div> -->
+    <header><h1>Star Wars RPG</h1></header>
+    <!-- create gameboard div -->
+    <div class="container justify-content-center" id="gameboard">
+    
+        <!-- create figherSelection container -->
+        <section class="row justify-content-center" id="yourFighter">
+            <h2 class="col-sm-12">Your Fighter</h2>
+    
+            <!-- display four fighters -->
+            <div class="card-deck col-sm-12 justify-content-center flex-nowrap fighterBox">
+                <div class="card fighterCard" id="luke">
+                    <div class="card-title fighterName" id="lukeName">Luke Skywalker</div>
+                    <div class="fighterPic">
+                        <img src="#" alt="Luke Skywalker">
+                    </div>
+                    <div class="card-subtitle fighterHealth"id="lukeHP">100</div>
+                </div>
+                <div class="card fighterCard" id="obi">
+                    <div class="card-title fighterName" id="obiName">Obi-Wan Kenobi</div>
+                    <div class="fighterPic">
+                        <img src="#" alt="Obi-Wan Kenobi">
+                    </div>
+                    <div class="card-subtitle fighterHealth" id="obiHP">100</div>
+                </div>
+                <div class="card fighterCard" id="darth">
+                    <div class="card-title fighterName" id="darthName">Darth Vader</div>
+                    <div class="fighterPic">
+                        <img src="#" alt="Darth Vader">
+                    </div>
+                    <div class="card-subtitle fighterHealth"id="darthHP">100</div>
+                </div>
+                <div class="card fighterCard" id="hans">
+                    <div class="card-title fighterName" id="hansName">Hans Solo</div>
+                    <div class="fighterPic">
+                        <img src="#" alt="Hans Solo">
+                    </div>
+                    <div class="card-subtitle fighterHealth" id="hansHP">100</div>
+                </div>
+            </div>
+        </section>
+        <!-- create opponentFighers container -->
+        <section class="row justify-content-center" id="enemies">
+            <h2 class="col-12">Enemies Available to Attack</h2>
+            <!-- display enemy fighters with HP -->
+        </section>
+        <!-- create attack button section -->
+        <section class="row justify-content-center" id="fightSection">
+            <button id="attack">Attack</button>
+        </section>
+        <!-- create defenderFighter container -->
+        <section class="row justify-content-center" id="defender">
+            <h2 class="class-sm-12">Defender</h2>
+            <!-- display selected enemy -->
+        </section>
+        <!-- create message bar - initial message banner: press any key to begin -->
+        <div class="row justify-content-center" id="messageBar">Select your character to begin.</div>
+        
+    </div>
+
+
+    <!-- Javascript below -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="./assets/javascript/game.js"></script>
+</body>
+</html>
