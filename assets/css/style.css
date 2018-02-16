@@ -9,19 +9,26 @@
 
 h1 {
     font-family: 'Lato', 'Arial', sans-serif;
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 h2 {
     font-family: 'Lato', 'Arial', sans-serif;
-    font-size: 3rem;
-    margin:20px;
+    font-size: 2rem;
+    padding:50px 5px 5px 5px;
 }
 
 .byline {
     font-family: 'Lato', 'Arial', sans-serif;
 }
 
+.row {
+    margin-top: 20px;
+}
+
+.card-title {
+    margin-bottom:0;
+}
 .score {
     font-family: 'VT323', monospace;
 }
@@ -127,7 +134,7 @@ h2 {
 
 #gameboard {
     align-content: center;
-    margin: 100px;
+    margin: 20px 100px;
 }
 
 #yourFighter {
@@ -136,62 +143,67 @@ h2 {
     justify-content: space-between;
 }
 
-#fighterBox {
-    width:75%;    
+#fighterBox,
+#defenderBox,
+#enemiesBox {
+    height: 160px;    
     flex: content;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-content: center;
     justify-content: space-between;
 }
 
 /* create fighter card */
 
+
 .fighterCard {
-    height: 150px;
+    width: 180px;
+    height: 184px;
     background-color: white;
-    border: 1px solid green;
+    border: 2px solid green;
     align-content: center;
     position: relative;
-    top: 10px;
-    margin: 15px 5px;
+    top: 0px;
+    margin: 0px 5px;
+    padding: 5px;
 }
+
+.fighterCard:hover {
+    background-color:#82e790;
+}
+
 
 .fighterName {
     position: relative;
-    top: 10px;
+    top: 0px;
     color: black;
     font-size: .8rem;
 }
 
 .fighterPic {
-    height: 80px;
+    width: 100%;
     position: relative;
-    top: 25px;
+    top: 0px;
 }
 
 .fighterHealth {
     position: relative;
-    top: 25px;
+    top: 5px;
     color: black;
     font-size: .7rem;
 }
 
-#enemies {
-    clear: both;
+/* #enemies {
     align-content: center;
-    flex: content;
-    justify-content: space-between;
 }
 
 #fightSection {
-    clear: both;
     align-content: center;
 }
 
 #defender {
-    clear: both;
     align-content: center;
-}
+} */
 
 #messageBar {
     animation: msg 2s;
