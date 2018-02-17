@@ -3,20 +3,24 @@
 //      STAR WARS RPG
 //
 //////////////////////////////////////////////////////////////////////////////////////////////
-
+//all game code goes inside the doc.ready function
+$(document).ready(function () {
+    console.log("document is ready");
+    $("#gameboard").hide();
 
 //      VARIABLES
 //////////////////////////////////////////////////////////////////////////////////////////////
-//fighters
-var fighters = ["#lukeCard","#obiCard","#darthCard","#hanCard"];
+//fighter arrays
 var playerFighter=[];
 var opponentFighters = [];
 var defenderFighter=[];
-//flags
+//game state flags
+var gameStarted = false;
 var isPlaying = false;
+var battleReady = false;
 var gameOver = false;
 var wonGame = false;
-var battleReady = false;
+
 
 //      OBJECTS
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,14 +44,17 @@ var darthFighter = new Fighter("Darth Vader", "darthCard", "./assets/images/dart
 
 var hanFighter = new Fighter("Han Solo", "hanCard", "./assets/images/han.jpg");
 
+//create array to hold all fighters
 var allFighters = [lukeFighter, obiFighter, darthFighter, hanFighter];
 
 // FUNCTIONS
 //////////////////////////////////////////////////////////////////////////////////////////////
       // ====================================================================
       // Here we create various on "click" functions which capture the clicks
+
+//utility function to generate a random number between a specified range      
 function getRandom(low, high) {
-    return (Math.floor(Math.random() * low) + high);
+    return (Math.floor(Math.random() * high) + low);
 }
 
 //function to initialize game to starting state
@@ -56,19 +63,31 @@ function gameInit()
     playerFighter = [];
     opponentFighters = [];
     defenderFighter = [];
-    isPlaying = false;
     gameOver = false;
     wonGame = false;
+    isPlaying = false;
     battleReady = false;
     emptyAllFighterBoxes();
+    //reset health and attack power
+    resetFighters();
     //display all 4 characters in the top section of the gameboard
     displayFighterCards("#fighterBox",allFighters);
 }
 
-//function to display 4 fighters in initial state in the character selection row
+function resetFighters()
+{
+    for (var i = 0; i < allFighters.length; i++){
+        allFighters[i].health = getRandom(50, 120);
+        allFighters[i].attackPower= getRandom(5, 15);
+        allFighters[i].baseAttackPower = allFighters[i].attackPower;
+        allFighters[i].ctrAttackPower= getRandom(5, 30);
+    }
+}
+
+//function to display 4 fighters in specified html container in the character selection row
 function displayFighterCards (boxName,fighterArray)
 {
-    console.log("Display " + boxName);
+    console.log("Adding " + fighterArray + " to " + boxName);
     var bgcolor;
     switch (boxName) {
         case "#enemiesBox": 
@@ -77,37 +96,38 @@ function displayFighterCards (boxName,fighterArray)
         case "#defenderBox":
             bgcolor = "#00ff00";
             break;
-        //default is fighterBox at top
-        default:
+        default://default is fighterBox with white background
             bgcolor="#ffffff";
             break;
     }
     console.log("loop through array " + fighterArray.length + " times");
     for (var i= 0; i<fighterArray.length; i++)
     {   
-        console.log("adding fighter " + i + " to " + boxName);
+        //get fighter object from the array
         var fighter = fighterArray[i];
-        //build card title, pic and health elements
+        console.log("adding fighter " + fighter.name + " to " + boxName);
+
+        //build a card div with class .fighterCard 
+        var fighterDiv = $("<div>").addClass("card fighterCard align-content-center");
+        fighterDiv.attr('id', fighter.id);
+        fighterDiv.css('background-color', bgcolor);
+        console.log ("card built for fighter with id:" + fighterDiv.attr('id'));
+        //append fighterCard to box for display
+        $(boxName).append(fighterDiv);
+        
+        //build card contents
+        //build card title div
         var fighterNameDiv = $("<div>").addClass("card-title fighterName").text(fighter.name);
         //build card pic div
         var fighterPicDiv = $("<div>").addClass("fighterPic").html('<img src="' + fighter.image + '" alt="' + fighter.name +'">' );
-        console.log('<img src="' + fighter.image + '" alt="' + fighter.name + '">');
+        console.log('adding pic: <img src="' + fighter.image + '" alt="' + fighter.name + '">');
         //build health div
         var fighterHealthDiv = $("<div>").addClass("card-subtitle fighterHealth").text(fighter.health);
 
-        //build fighterCard 
-        var fighterDiv = $("<div>").addClass("card fighterCard align-content-center");
-        fighterDiv.attr('id', fighter.id);
-        fighterDiv.css('background-color',bgcolor);
-        console.log (fighterDiv.attr('id'));
-
-        //append card elements to fighter card
+        //append card contents to fighter card
         fighterDiv.append(fighterNameDiv);
         fighterDiv.append(fighterPicDiv);
         fighterDiv.append(fighterHealthDiv); 
-        
-        //append fighterCard to box for display
-        $(boxName).append(fighterDiv);
         
     }console.log("finished adding fighters to " + boxName);
 }
@@ -127,8 +147,6 @@ function emptyFighterBox(boxName) {
 
 // GAME HANDLERS
 //////////////////////////////////////////////////////////////////////////////////////////////
-//all game code goes inside the doc.ready function
-$(document).ready(function () {
 
     //DOM prompt user to press any key to begin
     $("#messageBar").text("Press any key to begin.");
@@ -136,53 +154,55 @@ $(document).ready(function () {
 
     //on key up - initialize game
     $(document).keyup(function () {
-        if (!isPlaying){
-            isPlaying = true;
+        if (!gameStarted){
+            console.log("keyup event - start game");
+            gameStarted = true;
 
             $(".star").hide();
-            $(".war").hide();
-            $(".byline").hide();
-            $(".gameboard").show();
+            $(".wars").hide();
+            $("#gameboard").show();
             
             //display fighters
             gameInit();
 
             //prompt user to select a fighter
             $("#messageBar").text("Select your character.");
-        }
-    });    
+        } 
+    });   
+    
 
-    // fighterCard click event handler to process fighter selection
-    //on click handlers for each fighter
-    $(".fighterCard").on("click", function () {
-        console.log("figher card clicked");
+    // delegate fighterCard class click event b/c they were created dynamically
+    // on click handler will process fighter selection
+    //get the 'id' attribute to determine which fighter was clicked
+    $(".card-deck").on("click",".fighterCard", function () {
         var fighterID = $(this).attr('id');
+        console.log("figher card clicked for id: " + fighterID);
         //if game is not in progress, player has selected their character
         if (!isPlaying){
             //flip the isPlaying flag - game in progress
             isPlaying = true;
             //player has selected their character
             switch(fighterID) {
-                case '#lukeCard':
+                case 'lukeCard':
                     playerFighter = [lukeFighter];
                     opponentFighters = [obiFighter,darthFighter,hanFighter];
                     break;
-                case '#obiCard':
+                case 'obiCard':
                     playerFighter = [obiFighter];
                     opponentFighters = [lukeFighter, darthFighter, hanFighter];
                     break;
-                case '#darthCard':
+                case 'darthCard':
                     playerFighter = [darthFighter];
                     opponentFighters = [lukeFighter, obiFighter, hanFighter];
                     break;
-                case '#hanCard':
+                case 'hanCard':
                     playerFighter = [hanFighter];
                     opponentFighters = [lukeFighter, obiFighter, darthFighter];
                     break;
             }
             
             //display your character and move all others to opponents box
-            emptyAllFighterBoxes;
+            emptyAllFighterBoxes();
             displayFighterCards("#fighterBox",playerFighter);
             displayFighterCards("#enemiesBox", opponentFighters);
             
@@ -190,24 +210,31 @@ $(document).ready(function () {
             $("#messageBar").text("Select an opponent to fight.");
         }
         //onclick - set Defender = selected fighter
-        else if(defenderFighter.empty() && (fighterID != playerFighter.id)){
+        else if(defenderFighter.length===0 && (fighterID != playerFighter.id)){
             switch (fighterID) {
-                case '#lukeCard':
+                case 'lukeCard':
                     defenderFighter = [lukeFighter];
                     break;
-                case '#obiCard':
+                case 'obiCard':
                     defenderFighter = [obiFighter];
                     break;
-                case '#darthCard':
+                case 'darthCard':
                     defenderFighter = [darthFighter];
                     break;
-                case '#hanCard':
+                case 'hanCard':
                     defenderFighter = [hanFighter];
                     break;
             }
             //remove defender from opponent array
-            opponentFighters.splice(opponentFighters.indexOf(defenderFighter),1);
-            
+            var array = [];
+            for(var i=0; i<opponentFighters.length; i++){
+                if (defenderFighter[0] !== opponentFighters[i])
+                {
+                    array.push(opponentFighters[i]);
+                }
+            }
+            opponentFighters = array;
+
             //DOM move Defender to the defender area
             emptyFighterBox("#enemiesBox");
             emptyFighterBox("#defenderBox");
@@ -223,39 +250,49 @@ $(document).ready(function () {
     //attacks button handler calculates health point adjustments and evaluate game over.
     //on click of attack button
     $("#attack").on("click", function () {
-        if(battleReady){ // don't process until two fighters are selected 
+        if(battleReady && defenderFighter.length > 0){ // don't process until two fighters are selected 
             console.log("attack button clicked");
+            defender = defenderFighter[0];
+            player = playerFighter[0];
             //DOM play sound
             //Defender:health -= Player:attackPower;
-            defenderFighter[0].health -= playerFighter[0].attackPower;
+            defender.health -= player.attackPower;
             //Player:health -= Defender:ctrAttackPower;
-            playerFighter[0].health -= defenderFighter[0].ctrAttackPower;
+            player.health -= defender.ctrAttackPower;
             
+            $("#messageBar").animate({ top: "-=600px" }, "normal");
+            $("#messageBar").animate({ right: "+=150px"}, "normal");
+            $("#messageBar").html("You attacked " + defender.name + " with " + player.attackPower + " attack power. <br>" + defender.name + " attacked you with " + defender.ctrAttackPower + " attack power." );
             
-            $("#messageBar").html("You attacked " + defenderFighter[0].name + " with " + playerFighter[0].attackPower + " attack power. <br>" + defenderFighter[0].name + " attacked you with " + defenderFighter[0].ctrAttackPower + " ." );
+            //update fighterCards health
+            $("#" + player.id).find(".fighterHealth").text(player.health);
+            $("#" + defender.id).find(".fighterHealth").text(defender.health);
+
+            //Player:attackPower += baseAttackPower;
+            player.attackPower += player.baseAttackPower;
             
             //if Defender:health <= 0 Player wins
-            if (defenderFighter[0].health <= 0)
+            if (defender.health <= 0)
             {
+                //reset defender array
+                defenderFighter=[];
                 //DOM hide Defender
                 emptyFighterBox("#defenderBox");
                 //if opponentFighters is not empty, prompt user to select another opponent
-                if(!opponentFighters.empty())
+                if(opponentFighters.length!==0)
                 {
                     //prompt user to select an opponent to fight
-                    $("#messageBar").text("Select an opponent to fight.");
+                    $("#messageBar").text("You defeated " + defender.name + " Select another opponent to fight.");
                 }
                 else { //game over you win
                     wonGame = true;
                     isPlaying = false;
                     gameOver = true;
                     battleReady = false;
+                    gameStarted = false;
                     //display winner message.
-                    $("#messageBar").text("You defeated all of your opponents. The force was with you! <br> Press any key to play again.");
+                    $("#messageBar").html("You defeated all of your opponents. The force was with you! <br> Press any key to play again.");
                 }
-
-                //Player:attackPower += baseAttackPower;
-                playerFighter[0].attackPower += playerFighter.baseAttackPower;
 
             } else if(playerFighter[0].health <= 0) { //else if Player:health <= 0 Player loses - Game Over
                 emptyFighterBox("#fighterBox");
@@ -263,6 +300,7 @@ $(document).ready(function () {
                 isPlaying = false;
                 gameOver = true;
                 battleReady = false;
+                gameStarted = false;
                 //display loser message.
                 $("#messageBar").text("You have been defeated. Gather your strength and press any key to play again.");
             }

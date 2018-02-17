@@ -14,8 +14,8 @@ h1 {
 
 h2 {
     font-family: 'Lato', 'Arial', sans-serif;
-    font-size: 2rem;
-    padding:50px 5px 5px 5px;
+    font-size: 1.5rem;
+    padding-top:10px;
 }
 
 .byline {
@@ -23,7 +23,7 @@ h2 {
 }
 
 .row {
-    margin-top: 20px;
+    padding-top: 5px;
 }
 
 .card-title {
@@ -48,7 +48,6 @@ h2 {
     100% {
         opacity: 0;
         transform: translateZ(-1000em);
-        display: none;
     }
 }
 
@@ -67,7 +66,6 @@ h2 {
     100% {
         opacity: 0;
         transform: translateZ(-1000em);
-        display: none;
     }
 }
 
@@ -75,14 +73,14 @@ h2 {
     width: 70%;
     position: relative;
     top: 100px;
-    animation: star 5s ease-out;
+    animation: star 10s ease-out infinite;
 }
 
 .wars {
     width: 70%;
     position: relative;
     top: 200px;
-    animation: wars 5s ease-out;
+    animation: wars 10s ease-out infinite;
 }
 
 .starwars-intro {
@@ -137,35 +135,36 @@ h2 {
     margin: 20px 100px;
 }
 
-#yourFighter {
-    align-content: center;
-    flex: content;
-    justify-content: space-between;
-}
-
 #fighterBox,
 #defenderBox,
 #enemiesBox {
-    height: 160px;    
+    height: 180px;    
     flex: content;
     flex-wrap: wrap;
     align-content: center;
     justify-content: space-between;
 }
 
+#messageBar {
+    padding-top:20px; 
+}
+
+#attack {
+    width:150px;
+}
+
 /* create fighter card */
 
 
 .fighterCard {
-    width: 180px;
-    height: 184px;
+    max-width: 180px;
+    height: 18 4px;
     background-color: white;
     border: 2px solid green;
     align-content: center;
     position: relative;
     top: 0px;
     margin: 0px 5px;
-    padding: 5px;
 }
 
 .fighterCard:hover {
@@ -207,6 +206,8 @@ h2 {
 
 #messageBar {
     animation: msg 2s;
+    color: #f0f35b;
+    font-size:1.5rem;
 }
 
 @keyframes msg {
