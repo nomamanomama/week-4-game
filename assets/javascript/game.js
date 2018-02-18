@@ -153,13 +153,14 @@ function emptyFighterBox(boxName) {
     $("#messageBar").show();
 
     //on key up - initialize game
-    $(document).keyup(function () {
+    $("#start").on("click",function () {
         if (!gameStarted){
             console.log("keyup event - start game");
             gameStarted = true;
 
             $(".star").hide();
             $(".wars").hide();
+            $("#start").hide();
             $("#gameboard").show();
             
             //display fighters
@@ -291,7 +292,7 @@ function emptyFighterBox(boxName) {
                     battleReady = false;
                     gameStarted = false;
                     //display winner message.
-                    $("#messageBar").html("You defeated all of your opponents. The force was with you! <br> Press any key to play again.");
+                    $("#messageBar").html("You defeated all of your opponents. The force was with you!");
                 }
 
             } else if(playerFighter[0].health <= 0) { //else if Player:health <= 0 Player loses - Game Over
@@ -302,8 +303,11 @@ function emptyFighterBox(boxName) {
                 battleReady = false;
                 gameStarted = false;
                 //display loser message.
-                $("#messageBar").text("You have been defeated. Gather your strength and press any key to play again.");
+                $("#messageBar").text("You have been defeated.");
             }
+           if(gameOver)
+               $("#start").show();
+            
         }
     });
 

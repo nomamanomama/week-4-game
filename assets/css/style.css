@@ -1,198 +1,197 @@
     body {
-    background-image: url("../../assets/images/bg.jpg");
-    font-family: 'Roboto Mono', monospace;
-    align-content: center;
-    text-align: center;
-    font-size: 14px;
-    color: white;
-}
-
-h1 {
-    font-family: 'Lato', 'Arial', sans-serif;
-    font-size: 3rem;
-}
-
-h2 {
-    font-family: 'Lato', 'Arial', sans-serif;
-    font-size: 1.5rem;
-    padding-top:10px;
-}
-
-.byline {
-    font-family: 'Lato', 'Arial', sans-serif;
-}
-
-.row {
-    padding-top: 5px;
-}
-
-.card-title {
-    margin-bottom:0;
-}
-.score {
-    font-family: 'VT323', monospace;
-}
-
-@keyframes star {
-    0% {
-        opacity: 0;
-        transform: scale(1.5) translateY(-0.75em);
+        background-image: url("../../assets/images/bg.jpg");
+        font-family: 'Roboto Mono', monospace;
+        align-content: center;
+        text-align: center;
+        font-size: 14px;
+        color: white;
     }
-    20% {
-        opacity: 1;
+
+    h1 {
+        font-family: 'Lato', 'Arial', sans-serif;
+        font-size: 2rem;
     }
-    89% {
-        opacity: 1;
-        transform: scale(1);
+
+    h2 {
+        font-family: 'Lato', 'Arial', sans-serif;
+        font-size: 1.5rem;
+        padding-top: -5px;
     }
-    100% {
-        opacity: 0;
-        transform: translateZ(-1000em);
+
+    .byline {
+        font-family: 'Lato', 'Arial', sans-serif;
     }
-}
 
-@keyframes wars {
-    0% {
-        opacity: 0;
-        transform: scale(1.5) translateY(-0.75em);
+    .row {
+        padding-top: 0px;
     }
-    20% {
-        opacity: 1;
+
+    .card-title {
+        margin-bottom: 0;
     }
-    89% {
-        opacity: 1;
-        transform: scale(1);
+
+    .score {
+        font-family: 'VT323', monospace;
     }
-    100% {
-        opacity: 0;
-        transform: translateZ(-1000em);
+
+    @keyframes star {
+        0% {
+            opacity: 0;
+            transform: scale(1.5) translateY(-0.75em);
+        }
+        20% {
+            opacity: 1;
+        }
+        89% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translateZ(-1000em);
+        }
     }
-}
 
-.star {
-    width: 70%;
-    position: relative;
-    top: 100px;
-    animation: star 10s ease-out infinite;
-}
-
-.wars {
-    width: 70%;
-    position: relative;
-    top: 200px;
-    animation: wars 10s ease-out infinite;
-}
-
-.starwars-intro {
-    width: 100%;
-    margin: 150px 0px;
-    perspective: 800px;
-    transform-style: preserve3d;
-    align-content: center;
-    position: absolute;
-    top: 0px;
-}
-
-@keyframes spin-letters {
-    0%,
-    10% {
-        opacity: 0;
-        transform: rotateY(90deg);
+    @keyframes wars {
+        0% {
+            opacity: 0;
+            transform: scale(1.5) translateY(-0.75em);
+        }
+        20% {
+            opacity: 1;
+        }
+        89% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translateZ(-1000em);
+        }
     }
-    30% {
-        opacity: 1;
+
+    .star {
+        width: 70%;
+        position: relative;
+        top: 100px;
+        animation: star 10s ease-out infinite;
     }
-    70%,
-    86% {
-        transform: rotateY(0);
-        opacity: 1;
+
+    .wars {
+        width: 70%;
+        position: relative;
+        top: 200px;
+        animation: wars 10s ease-out infinite;
     }
-    95%,
-    100% {
-        opacity: 0;
+
+    .starwars-intro {
+        width: 100%;
+        margin: 150px 0px;
+        perspective: 800px;
+        transform-style: preserve3d;
+        align-content: center;
+        position: absolute;
+        top: 0px;
     }
-}
 
-.byline span {
-    position: relative;
-    top: -88px;
-    animation: spin-letters 5s linear;
-}
+    @keyframes spin-letters {
+        0%,
+        10% {
+            opacity: 0;
+            transform: rotateY(90deg);
+        }
+        30% {
+            opacity: 1;
+        }
+        70%,
+        86% {
+            transform: rotateY(0);
+            opacity: 1;
+        }
+        95%,
+        100% {
+            opacity: 0;
+        }
+    }
 
-.byline {
-    width: 100%;
-    font-stretch: extra-expanded;
-    color: white;
-    align-content: center;
-    text-align: center;
-    font-size: 5rem;
-    vertical-align: middle;
-    animation: move-byline 5s linear;
-}
+    .byline span {
+        position: relative;
+        top: -88px;
+        animation: spin-letters 5s linear;
+    }
 
-#gameboard {
-    align-content: center;
-    margin: 20px 100px;
-}
+    .byline {
+        width: 100%;
+        font-stretch: extra-expanded;
+        color: white;
+        align-content: center;
+        text-align: center;
+        font-size: 5rem;
+        vertical-align: middle;
+        animation: move-byline 5s linear;
+    }
 
-#fighterBox,
-#defenderBox,
-#enemiesBox {
-    height: 180px;    
-    flex: content;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: space-between;
-}
+    #gameboard {
+        align-content: center;
+        margin: 2px 100px;
+    }
 
-#messageBar {
-    padding-top:20px; 
-}
+    #fighterBox,
+    #defenderBox,
+    #enemiesBox {
+        height: 150px;
+        flex: content;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: space-between;
+    }
 
-#attack {
-    width:150px;
-}
+    #messageBar {
+        padding-top: 0px;
+    }
 
-/* create fighter card */
+    #attack {
+        width: 150px;
+    }
+    /* create fighter card */
 
+    .fighterCard {
+        min-height: 136px;
+        min-width: 129px;
+        max-height: 138px;
+        max-width: 145px;
+        background-color: white;
+        border: 2px solid green;
+        align-content: center;
+        position: relative;
+        top: 0px;
+        margin: 0px 5px;
+    }
 
-.fighterCard {
-    max-width: 180px;
-    height: 18 4px;
-    background-color: white;
-    border: 2px solid green;
-    align-content: center;
-    position: relative;
-    top: 0px;
-    margin: 0px 5px;
-}
+    .fighterCard:hover {
+        background-color: #82e790;
+    }
 
-.fighterCard:hover {
-    background-color:#82e790;
-}
+    .fighterName {
+        position: relative;
+        top: 0px;
+        color: black;
+        font-size: .8rem;
+    }
 
+    .fighterPic {
+        width: 100%;
+        position: relative;
+        top: 0px;
+    }
 
-.fighterName {
-    position: relative;
-    top: 0px;
-    color: black;
-    font-size: .8rem;
-}
-
-.fighterPic {
-    width: 100%;
-    position: relative;
-    top: 0px;
-}
-
-.fighterHealth {
-    position: relative;
-    top: 5px;
-    color: black;
-    font-size: .7rem;
-}
-
-/* #enemies {
+    .fighterHealth {
+        position: relative;
+        top: 3px;
+        color: black;
+        font-size: .7rem;
+    }
+    /* #enemies {
     align-content: center;
 }
 
@@ -204,20 +203,14 @@ h2 {
     align-content: center;
 } */
 
-#messageBar {
-    animation: msg 2s;
-    color: #f0f35b;
-    font-size:1.5rem;
-}
-
-@keyframes msg {
-    0% {
-
+    #messageBar {
+        animation: msg 2s;
+        color: #f0f35b;
+        font-size: 1.5rem;
     }
-    50% {
 
+    @keyframes msg {
+        0% {}
+        50% {}
+        100% {}
     }
-    100%{
-
-    }
-}
