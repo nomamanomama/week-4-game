@@ -263,7 +263,7 @@ function emptyFighterBox(boxName) {
             
             $("#messageBar").animate({ top: "-=600px" }, "normal");
             $("#messageBar").animate({ right: "+=150px"}, "normal");
-            $("#messageBar").html("You attacked " + defender.name + " with " + player.attackPower + " attack power. <br>" + defender.name + " attacked you with " + defender.ctrAttackPower + " attack power." );
+            $("#messageBar").html("You attacked " + defender.name + " with " + player.attackPower + " damage. <br>" + defender.name + " attacked you with " + defender.ctrAttackPower + " damage." );
             
             //update fighterCards health
             $("#" + player.id).find(".fighterHealth").text(player.health);
