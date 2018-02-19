@@ -1,89 +1,30 @@
 # week-4-game
 Star Wars RPG
 
-
-One Paragraph of project description goes here
+This role-play game begins with an intro screen and a "Start New Game" button. After clicking the start button, 4 characters are displayed. Each player begins with health points (displayed below the character picture) and attack power and counter-attack power (not-displayed). The user selects one of the characters as his role character. The remaining characters become available opponents. The user then selects an opponent to battle, the defender. The user attacks the defender by clicking the "Attack" button. The health points of the defender are reduced by the user character's attack power. The user character's health points are reduced by the defender's attack power. With each attack, the user character's attack power increases by a base amount. When one of the player's health points is reduced to zero or below, the battle is ended. If the user character wins the battle another opponenet must be selected to battle. The game continues until all opponents are defeated or the user is defeated.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This game is run as a front-end application. No installation is required. 
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+Chrome web browser recommended.
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+No installation is required.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Javascript, JQuery, HTML, CSS, Bootstrap
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Kathy Kennedy** - *Initial work* - [nomamanomama](https://github.com/nomamanomama)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* https://cssanimation.rocks/starwars/ by Donovan
+* UTAustin Houston Coding Bootcamp
